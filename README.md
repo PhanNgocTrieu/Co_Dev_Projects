@@ -1,6 +1,7 @@
 # Co_Dev_Projects
 This repository for developing cpp and other projects as upgrading Cpp skills and collaborate working
 
+Url for projects ideas: https://wiingy.com/blog/best-cpp-projects/
 
 Projects:
 	- Text-based Adventure Game
