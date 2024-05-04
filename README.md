@@ -10,4 +10,6 @@ Projects:
 		Understanding of C++ syntax, game development, data structures, file input/output operations, and user input handling.
 		Text-based adventure games can be used as educational games to teach problem-solving, critical thinking, and decision-making skills.
 
+Collab member : NguyenPLK
+
 
