@@ -13,3 +13,7 @@ Projects:
 Collab member : NguyenPLK
 
 
+	Libraries:
+		MacOS:
+			- 
+			- brew install sdl_image
