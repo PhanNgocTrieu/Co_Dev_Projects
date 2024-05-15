@@ -19,7 +19,8 @@ static const gchar introspection_xml[] =
 
 class Application {
     public:
-        Application() {
+        Application(GMainLoop* loop)
+        : m_loop(loop) {
 
         }
 
@@ -30,13 +31,25 @@ class Application {
         GMainLoop* get_main_loop() {
             return m_loop;
         }
-    protected:
-        void init_window() {
 
+
+    protected:
+        void activate(GtkApplication *app, gpointer user_data) {
+
+        }
+
+        void init_window(int argc, char* argv[]) {
+#if 0
+            app = gtk_application_new("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+            g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+            status = g_application_run(G_APPLICATION(app), argc, argv);
+            g_object_unref(app);
+#endif
         }
 
     protected:
         GMainLoop* m_loop = nullptr;
+        GtkApplication *app = nullptr   ;
 };
 
 class DbusInterface {
@@ -90,10 +103,7 @@ int main(int argc,
     g_print("Interface name %s\n", introspection_data->interfaces[0]->name); 
     g_dbus_node_info_unref(introspection_data);
 
-    m_loop = g_main_loop_new(
-        m_ctx,
-        true
-    );
+    m_loop = g_main_loop_new( nullptr, true );
     g_main_loop_ref(m_loop);
     g_main_loop_run(m_loop);
     g_main_loop_unref(m_loop);
