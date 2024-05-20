@@ -17,3 +17,7 @@ Collab member : NguyenPLK
 		MacOS:
 			- 
 			- brew install sdl_image
+
+
+# Dbus Glib:
+[Migrating Dbus](https://docs.gtk.org/gio/migrating-gdbus.html#using-gdbus-codegen)
