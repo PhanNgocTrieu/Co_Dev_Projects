@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ccOS 2019-12-13 v1.3 -->
+<node name="dbus.demo" >
+    <interface name="dbus.demo.research">
+        <method name="helloTo">
+            <arg name="toSay" type="s" direction="in" />
+        </method>
+        <signal name="onCompleted">
+            <arg name="from" type="s" />
+        </signal>
+    </interface>
+</node>
