@@ -1,7 +1,6 @@
 #include <gio/gio.h>
 #include "dbus.res.h"
 #include <iostream>
-#include <unistd.h>
 
 #define LOGGER(MSG) \
     std::cout << "[Server][ " << MSG << " ]" << std::endl;
@@ -128,19 +127,12 @@ class Server {
 };
 
 int main() {
-    auto pid = fork();
-
-    if (pid == 0) {
-        std::cout << "Running as Client!" << std::endl;
-    }
-    else {
-        std::cout << "Running as Server!" << std::endl;
-        loop = g_main_loop_new(NULL, false);
-        Server& _server = Server::getInstance(loop);
-        _server.registerDbusService(G_BUS_TYPE_SESSION);
-        g_main_loop_run(loop);
-        g_main_loop_unref(loop);
-        _server.unregisterDbusService();
-    }
+    
+    loop = g_main_loop_new(NULL, false);
+    Server& _server = Server::getInstance(loop);
+    _server.registerDbusService(G_BUS_TYPE_SESSION);
+    g_main_loop_run(loop);
+    g_main_loop_unref(loop);
+    _server.unregisterDbusService();
     return 0;
 }
